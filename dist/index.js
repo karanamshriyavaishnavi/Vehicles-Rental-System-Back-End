@@ -20,6 +20,12 @@ app.use(express_1.default.json());
 app.use('/Vehicals', express_1.default.static('Vehicals'));
 app.use('/Lisence', express_1.default.static('Lisence'));
 app.use('/upload', express_1.default.static('upload'));
+app.get("/", (req, res) => {
+    res.send("Backend is live and working!");
+});
+app.get("/api/test", (req, res) => {
+    res.json({ message: "Hello from backend API!" });
+});
 mongoose_1.default.connect(MONGO_URI).then(() => {
     console.log("mongodb is connected");
     app.listen(PORT, () => {
