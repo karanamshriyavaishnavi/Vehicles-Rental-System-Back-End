@@ -1,5 +1,5 @@
 import express ,{json,urlencoded} from "express";
-import mongoose, { Error } from "mongoose";
+import mongoose from "mongoose";
 import cors from 'cors';
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
@@ -7,6 +7,7 @@ import customer from './controller/Customer';
 import owner from './controller/Owners';
 import Admin from './controller/Admin'
 import Chats from "./controller/Chats"
+import Message from "./models/Message";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -18,7 +19,13 @@ app.use('/Vehicals',express.static('Vehicals'))
 app.use('/Lisence', express.static('Lisence'))
 app.use('/upload', express.static('upload'))
 
+app.get("/", (req, res) => {
+    res.send("Backend is live and working!");
+})
 
+app.get("/api/test", (req, res) => {
+    res.json({message: "Hello from backend API!"})
+})
 
 mongoose.connect(MONGO_URI).then(()=>{
     console.log("mongodb is connected");
