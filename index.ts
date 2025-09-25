@@ -27,7 +27,7 @@ mongoose.connect(MONGO_URI).then(()=>{
     })
 
 })
-.catch((err); => {
+.catch((err) => {
     console.error("mongodb connection error.",err);
 })
 
